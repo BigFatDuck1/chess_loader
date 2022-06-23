@@ -23,6 +23,7 @@ var numbers = ["1","2","3","4","5","6","7","8"]
 
 func _ready():
 	connect("text_entered", self, "on_enter_pressed")
+	$TextureButton.connect("pressed", self, "button_pressed")
 	self.text = ""
 	$Label.text = ""
 	
@@ -63,4 +64,8 @@ func raw_convert(text):
 		GameManager.FEN_ready()
 	else:
 		$Label.text = "Input not registered! Try again!"
+	
+func button_pressed():
+	on_enter_pressed(self.text)
+
 

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/chessboard_blue.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/FENInput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/ship_E.png" type="Texture" id=4]
+[ext_resource path="res://Assets/ship_e_green.png" type="Texture" id=5]
+[ext_resource path="res://Assets/lineedit.tres" type="Theme" id=6]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -34,8 +37,11 @@ columns = 8
 [node name="FENInput" parent="." instance=ExtResource( 3 )]
 margin_left = 40.0
 margin_top = 613.0
-margin_right = 552.0
+margin_right = 486.0
 margin_bottom = 669.0
+theme = ExtResource( 6 )
+placeholder_text = "Enter FEN Here..."
+placeholder_alpha = 0.5
 
 [node name="Label" type="Label" parent="FENInput"]
 modulate = Color( 0.976471, 0.356863, 0.356863, 1 )
@@ -43,3 +49,11 @@ margin_top = 72.0
 margin_right = 512.0
 margin_bottom = 86.0
 text = "Try again!"
+
+[node name="TextureButton" type="TextureButton" parent="FENInput"]
+margin_left = 512.0
+margin_right = 576.0
+margin_bottom = 64.0
+rect_rotation = 89.9999
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
