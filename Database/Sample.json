@@ -1,0 +1,9 @@
+[
+    {
+        "Title": "Anastasia's Mate",
+        "FEN": "5n1k/ppp1Nppp/1b6/6P1/2qp1PQ1/P7/1PPr4/1K5R",
+        "Turn": "white",
+        "Solution": "\n 1. Rh7+ Nh7 \n 2. Qc8+ Kf8 \n 3. Qf8+ Kh7 \n 4. Qg8#",
+        "Text": "Anastasia's mate"
+    }
+]

@@ -1,11 +1,54 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/chessboard_blue.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/FENInput.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/ship_E.png" type="Texture" id=4]
-[ext_resource path="res://Assets/ship_e_green.png" type="Texture" id=5]
-[ext_resource path="res://Assets/lineedit.tres" type="Theme" id=6]
+[ext_resource path="res://Assets/Buttons/ship_E.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Buttons/ship_e_green.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Buttons/lineedit.tres" type="Theme" id=6]
+[ext_resource path="res://Assets/black_moves.png" type="Texture" id=7]
+[ext_resource path="res://Assets/white_moves.png" type="Texture" id=8]
+[ext_resource path="res://Assets/CooperHewitt.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Assets/CooperHewitt-Medium.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/Buttons/show.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Buttons/next.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Buttons/prev.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Buttons/play.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Buttons/load.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Buttons/hide.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Buttons/shuffle.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Buttons/shuffle_green.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Buttons/load_green.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Buttons/play_green.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Buttons/next_green.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Buttons/prev_green.png" type="Texture" id=22]
+[ext_resource path="res://Assets/player.png" type="Texture" id=23]
+[ext_resource path="res://Scripts/GUI.gd" type="Script" id=24]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.0
+} ]
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -18,10 +61,10 @@ anchor_bottom = 1.0
 color = Color( 0.192157, 0.180392, 0.168627, 1 )
 
 [node name="Board" type="Control" parent="."]
-margin_left = 40.0
-margin_top = 69.0
-margin_right = 98.0
-margin_bottom = 69.0
+margin_left = 53.0
+margin_top = 79.0
+margin_right = 111.0
+margin_bottom = 79.0
 
 [node name="Sprite" type="Sprite" parent="Board"]
 texture = ExtResource( 1 )
@@ -33,6 +76,20 @@ anchor_bottom = 1.0
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 8
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Board"]
+position = Vector2( -45, 0 )
+frames = SubResource( 1 )
+frame = 1
+centered = false
+
+[node name="Title" type="Label" parent="Board"]
+margin_top = -54.0
+margin_right = 946.0
+margin_bottom = -14.0
+theme = SubResource( 2 )
+text = "Chess Loader"
+align = 1
 
 [node name="FENInput" parent="." instance=ExtResource( 3 )]
 margin_left = 40.0
@@ -57,3 +114,125 @@ margin_bottom = 64.0
 rect_rotation = 89.9999
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
+
+[node name="GUI" type="Control" parent="."]
+self_modulate = Color( 0.227451, 0.227451, 0.227451, 1 )
+margin_left = 609.0
+margin_top = 79.0
+margin_right = 1032.0
+margin_bottom = 591.0
+script = ExtResource( 24 )
+
+[node name="PaneBackground" type="Sprite" parent="GUI"]
+self_modulate = Color( 0.101961, 0.101961, 0.101961, 1 )
+position = Vector2( -33, 33 )
+scale = Vector2( 7.625, 7.5 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="BrowseBG" type="Sprite" parent="GUI"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -33, 33 )
+scale = Vector2( 7.625, 1.26563 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="SelectBG" type="Sprite" parent="GUI"]
+self_modulate = Color( 0.0117647, 0.00392157, 0.0705882, 1 )
+position = Vector2( -33, 113 )
+scale = Vector2( 7.625, 1 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="NumberBoxBG" type="Sprite" parent="GUI"]
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 1 )
+position = Vector2( 39, 121 )
+scale = Vector2( 0.749999, 0.75 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="Browser" type="LineEdit" parent="GUI"]
+margin_left = -17.0
+margin_top = 50.0
+margin_right = 286.0
+margin_bottom = 104.0
+theme = ExtResource( 6 )
+placeholder_text = "Enter file path (or click icon)..."
+
+[node name="Load" type="TextureButton" parent="GUI"]
+margin_left = 286.0
+margin_top = 50.0
+margin_right = 353.0
+margin_bottom = 114.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 19 )
+
+[node name="ProblemNumber" type="LineEdit" parent="GUI"]
+margin_left = 31.0
+margin_top = 113.0
+margin_right = 95.0
+margin_bottom = 177.0
+theme = ExtResource( 6 )
+align = 1
+
+[node name="Total" type="Label" parent="GUI"]
+margin_left = 95.0
+margin_top = 113.0
+margin_right = 158.0
+margin_bottom = 177.0
+theme = SubResource( 5 )
+text = "/0"
+align = 1
+valign = 1
+
+[node name="Solution" type="RichTextLabel" parent="GUI"]
+margin_left = -17.0
+margin_top = 185.0
+margin_right = 431.0
+margin_bottom = 441.0
+theme = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Test[/center]"
+text = "Test"
+
+[node name="Play" type="TextureButton" parent="GUI"]
+margin_left = 159.0
+margin_top = 113.0
+margin_right = 223.0
+margin_bottom = 177.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 20 )
+
+[node name="Previous" type="TextureButton" parent="GUI"]
+margin_left = -33.0
+margin_top = 113.0
+margin_right = 31.0
+margin_bottom = 177.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 22 )
+
+[node name="Next" type="TextureButton" parent="GUI"]
+margin_left = 223.0
+margin_top = 113.0
+margin_right = 287.0
+margin_bottom = 177.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 21 )
+
+[node name="ShowHide" type="TextureButton" parent="GUI"]
+margin_left = 327.0
+margin_top = 385.0
+margin_right = 455.0
+margin_bottom = 513.0
+toggle_mode = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 16 )
+
+[node name="Random" type="TextureButton" parent="GUI"]
+margin_left = 287.0
+margin_top = 113.0
+margin_right = 351.0
+margin_bottom = 177.0
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
