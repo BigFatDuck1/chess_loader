@@ -8,7 +8,7 @@ var gm = self
 # Board info
 var board_pieces = Array()
 var dimension = Vector2(8,8)
-var database = "res://Database/"
+var database = "res://Database/" # File path for .json
 
 # File info
 var json_data # The file itself

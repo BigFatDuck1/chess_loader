@@ -22,6 +22,8 @@ func _ready():
 	$Previous.connect("pressed", self, "previous")
 	#Random button
 	$Random.connect("pressed", self, "shuffle")
+	#Clears error message
+	$ClearErrorMessages.connect("timeout", self, "clear_error_messages")
 
 # File browser
 func load_button_pressed():
@@ -46,6 +48,10 @@ func play_pressed():
 		GameManager.problem_number = $ProblemNumber.value - 1
 		GameManager.load_current_set(GameManager.problem_number)
 		$ProblemError.text = ""
+		# So user won't accidentally show the next solution
+		solution_state = 1
+		show_hide_pressed()
+		$ShowHide.pressed = false
 	elif GameManager.total_number == 0:
 		$ProblemError.text = "No file loaded!"
 
@@ -69,6 +75,11 @@ func show_hide_pressed():
 		$Solution.visible_characters = -1
 	elif solution_state == 1: #showing
 		solution_state = 0
-		print("show")
 		$Solution.visible_characters = 0
 
+# Clears error messages after approximately 5 seconds
+func clear_error_messages():
+	if $ProblemError.text != "":
+		$ProblemError.text = ""
+	if $LoadError.text != "":
+		$LoadError.text = ""
