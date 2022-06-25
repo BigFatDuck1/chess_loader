@@ -48,15 +48,18 @@ func _ready():
 func load_file(file_path):
 	json_data = get_json(database + file_path)
 	if json_data == []:
+		total_number = 0
 		return false
-	file_name = file_path
-	# Loads current set's data into autoload
-	load_current_set(0)
-	# Sets total number of problems in GUI
-	GameManager.total_number = json_data.size()
-	Main.get_node("GUI/Total").text = "/" + str(total_number)
-	#OS.shell_open("") # Opens file explorer
-	return true
+	else:
+		file_name = file_path
+		# Loads current set's data into autoload
+		load_current_set(0)
+		# Sets total number of problems in GUI
+		GameManager.total_number = json_data.size()
+		Main.get_node("GUI/Total").text = "/" + str(total_number)
+		Main.get_node("GUI/ProblemError").text = ""
+		#OS.shell_open("") # Opens file explorer
+		return true
 
 func load_current_set(n):
 	problem_number = n + 1 
@@ -64,6 +67,15 @@ func load_current_set(n):
 	GameManager.turn = json_data[n]["Turn"]
 	GameManager.solution = json_data[n]["Solution"]
 	GameManager.text = json_data[n]["Text"]
+	# Sets who to play
+	if turn == "w":
+		Main.get_node("Board/AnimatedSprite").visible = true
+		Main.get_node("Board/AnimatedSprite").frame = 0
+	elif turn == "b":
+		Main.get_node("Board/AnimatedSprite").visible = true
+		Main.get_node("Board/AnimatedSprite").frame = 1
+	else:
+		Main.get_node("Board/AnimatedSprite").visible = false
 	# Sets title
 	Main.get_node("GUI/Title").bbcode_text = "[center]" + file_name + "[/center]" + " - " + str(problem_number)
 	# Sets solution

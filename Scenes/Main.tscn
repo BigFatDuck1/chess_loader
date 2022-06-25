@@ -94,7 +94,6 @@ columns = 8
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Board"]
 position = Vector2( -45, 0 )
 frames = SubResource( 1 )
-frame = 1
 centered = false
 
 [node name="Title" type="Label" parent="Board"]

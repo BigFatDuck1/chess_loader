@@ -2,14 +2,14 @@
     {
         "Title": "Anastasia's Mate",
         "FEN": "5n1k/ppp1Nppp/1b6/6P1/2qp1PQ1/P7/1PPr4/1K5R",
-        "Turn": "w",
+        "Turn": "white",
         "Solution": "\n 1. Rh7+ Nh7 \n 2. Qc8+ Kf8 \n 3. Qf8+ Kh7 \n 4. Qg8#",
         "Text": "Anastasia's mate"
     },
     {
         "Title": "Arabian Mate",
         "FEN": "5k2/5p2/bp3Np1/p2p2P1/P2r4/1P3PK1/8/4R3",
-        "Turn": "w",
+        "Turn": "b",
         "Solution": "\n 1. Re8+ Kg7 \n 2. Rg8#",
         "Text": "Arabian Mate"
     }
