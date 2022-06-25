@@ -6,6 +6,7 @@ var loaded = 0
 
 func _ready():
 	$Solution.visible_characters = 0
+	$Title.text = ""
 	# Solution button
 	$ShowHide.connect("pressed", self, "show_hide_pressed")
 	# File Browser

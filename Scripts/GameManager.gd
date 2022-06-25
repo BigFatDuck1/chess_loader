@@ -111,6 +111,8 @@ func raw_convert(text):
 	# 1. Convert all numbers into clear
 	var clear_number
 	for i in text:
+		if i == " ":
+			break
 		if numbers.has(i):
 			for n in int(i):
 				FEN_clear.append("c")
