@@ -1,15 +1,22 @@
 extends Node
 
+# Nodes
 onready var Main = get_node("/root/Main")
 var input_node # FENInput is stored here
+var gm = self
 
+# Board info
 var board_pieces = Array()
 var dimension = Vector2(8,8)
+var database = "res://Database/"
 
+# File info
 var json_data # The file itself
+var file_name
 var board_state = null # Same as FEN_clear
 var FEN_clear = [] # Array that stores each piece on the board ("white rook" etc)
-var total_number # Total number of problems in JSON
+var total_number = 0 # Total number of problems in JSON
+var problem_number = 0
 var turn # Whose turn it is
 var solution = null
 var text = null # Additional information, see "text" in JSON file
@@ -35,16 +42,38 @@ var piece_dict = {
 }
 
 func _ready():
-	json_data = get_json("res://Database/Sample.json")
-	raw_convert(json_data[0]["FEN"])
-	GameManager.solution = json_data[0]["Solution"]
-	GameManager.text = json_data[0]["Text"]
-	#OS.shell_open("C:\\\\Users\\cleme\\Downloads") # Opens file explorer
+	load_file("Sample1.json") # Debug
+	pass
 
-func show_solution(solution):
-	Main.get_node("GUI/Solution").text = solution
+func load_file(file_path):
+	json_data = get_json(database + file_path)
+	if json_data == []:
+		return false
+	file_name = file_path
+	# Loads current set's data into autoload
+	load_current_set(0)
+	# Sets total number of problems in GUI
+	GameManager.total_number = json_data.size()
+	Main.get_node("GUI/Total").text = "/" + str(total_number)
+	#OS.shell_open("") # Opens file explorer
+	return true
+
+func load_current_set(n):
+	problem_number = n + 1 
+	raw_convert(json_data[n]["FEN"])
+	GameManager.turn = json_data[n]["Turn"]
+	GameManager.solution = json_data[n]["Solution"]
+	GameManager.text = json_data[n]["Text"]
+	# Sets title
+	Main.get_node("GUI/Title").bbcode_text = "[center]" + file_name + "[/center]" + " - " + str(problem_number)
+	# Sets solution
+	show_solution()
 	
-
+func show_solution():
+	Main.get_node("GUI/Solution").text = (
+		"\n" + GameManager.text + "\n\n" + GameManager.solution
+	)
+	
 func FEN_ready():
 	board_reset()
 	fill_array()
@@ -95,9 +124,13 @@ func raw_convert(text):
 
 func get_json(filename):
 	var file = File.new()
-	file.open(filename, File.READ) # Put directory in filename
-	var raw_text = file.get_as_text()
-	var data = parse_json(raw_text)
-	file.close()
-	return data
+	if not file.file_exists(filename):
+		var error = []
+		return error
+	else:
+		file.open(filename, File.READ) # Put directory in filename
+		var raw_text = file.get_as_text()
+		var data = parse_json(raw_text)
+		file.close()
+		return data
 	
