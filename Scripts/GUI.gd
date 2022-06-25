@@ -2,6 +2,8 @@ extends Control
 
 var solution_state = 0 # 0=hidden, 1=show
 
+var loaded = 0
+
 func _ready():
 	$Solution.visible_characters = 0
 	# Solution button
@@ -14,6 +16,9 @@ func _ready():
 	$ProblemNumber.max_value = GameManager.total_number
 	$Play.connect("pressed", self, "play_pressed")
 	$ProblemError.text = ""
+	# Next and Previous button
+	$Next.connect("pressed", self, "next")
+	$Previous.connect("pressed", self, "previous")
 
 # File browser
 func load_button_pressed():
@@ -25,9 +30,11 @@ func browser_text_entered(text):
 	if load_check == false:
 		$LoadError.text = "Error!"
 	else:
+		loaded = 1
 		$Browser.text = ""
 		$LoadError.text = ""
 		$ProblemNumber.max_value = GameManager.total_number
+		$ProblemNumber.min_value = 1
 		$ProblemNumber.value = 0
 
 # Problem scroller
@@ -39,6 +46,13 @@ func play_pressed():
 	elif GameManager.total_number == 0:
 		$ProblemError.text = "No file loaded!"
 
+func next():
+	$ProblemNumber.value += 1
+	play_pressed()
+
+func previous():
+	$ProblemNumber.value -= 1
+	play_pressed()
 
 
 func show_hide_pressed():
