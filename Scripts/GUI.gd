@@ -19,6 +19,8 @@ func _ready():
 	# Next and Previous button
 	$Next.connect("pressed", self, "next")
 	$Previous.connect("pressed", self, "previous")
+	#Random button
+	$Random.connect("pressed", self, "shuffle")
 
 # File browser
 func load_button_pressed():
@@ -54,7 +56,12 @@ func previous():
 	$ProblemNumber.value -= 1
 	play_pressed()
 
+func shuffle():
+	randomize()
+	$ProblemNumber.value = randi()%GameManager.total_number + 1
+	play_pressed()
 
+# Solution button
 func show_hide_pressed():
 	if solution_state == 0: #hidden
 		solution_state = 1
