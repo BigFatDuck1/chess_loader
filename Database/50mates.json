@@ -1,0 +1,52 @@
+[
+    {
+        "Title": "Anastasia's Mate",
+        "FEN": "5n1k/ppp1Nppp/1b6/6P1/2qp1PQ1/P7/1PPr4/1K5R",
+        "Turn": "w",
+        "Solution": "\n 1. Rxh7+ Nxh7 \n 2. Qc8+ Nf8 \n 3. Qxf8+ Kh7 \n 4. Qg8#",
+        "Text": "Anastasia's mate"
+    },
+    {
+        "Title": "f7 Removal of Guard",
+        "FEN": "r1b2r1k/ppp3pp/2n2qn1/2P1ppN1/2B2P2/2P5/P5PP/R1BQ1RK1",
+        "Turn": "w",
+        "Solution": "\n 1. Nxh7 Kxh7 \n 2. Qh5#",
+        "Text": "f7 Removal of Guard: white Bishop on c4 guards black King's g8 escape square"
+    },
+    {
+        "Title": "f2 Removal of Guard",
+        "FEN": "r1b1k2r/1p3p2/p1p5/2b3p1/4P1p1/3B4/PqP1N1PB/R3QR1K",
+        "Turn": "b",
+        "Solution": "\n 1. ... Rxh2+ \n 2. Kxh2 Qh8+ \n 3. Kg3 Qh4#",
+        "Text": "f2 Removal of Guard: black Bishop guards f2, while the doubled Pawns guard f4 and f3"
+    },
+    {
+        "Title": "f7 Removal of Guard",
+        "FEN": "r2q3k/ppb3pp/2p1B3/2P1RQ2/8/6P1/PP1r3P/5RK1",
+        "Turn": "w",
+        "Solution": "\n 1. Qxh7+ Kxh7 \n 2. Rh5+ Kg6 \n 3. Bf7#",
+        "Text": "f7 Removal of Guard: f1 Rook guards Bishop on 7th rank to deliver checkmate"
+    },
+    {
+        "Title": "Arabian Mate",
+        "FEN": "7k/2R5/5N2/8/8/8/8/8",
+        "Turn": "w",
+        "Solution": "\n 1. Rh7#",
+        "Text": "Arabian Mate: white Knight covers both escape squares of cornered black King"
+    },
+    {
+        "Title": "Arabian Mate",
+        "FEN": "2R5/5pk1/5Np1/6P1/8/8/8/8",
+        "Turn": "w",
+        "Solution": "\n 1. Rg8#",
+        "Text": "Arabian Mate: black King is also effective cornered when on 7th rank"
+    },
+    {
+        "Title": "Arabian Mate",
+        "FEN": "5k2/5p2/bp3Np1/p2p2P1/P2r4/1P3PK1/8/4R3",
+        "Turn": "w",
+        "Solution": "\n 1. Re8+ Kg7 \n 2. Rg8#",
+        "Text": "Arabian Mate"
+    }
+    
+]

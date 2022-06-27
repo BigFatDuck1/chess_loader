@@ -44,7 +44,9 @@ func browser_text_entered(text):
 
 # Problem scroller
 func play_pressed():
-	if GameManager.total_number != 0:
+	if $ProblemNumber.value == 0:
+		$ProblemError.text = "Problem doesn't exist!"
+	elif GameManager.total_number != 0:
 		GameManager.problem_number = $ProblemNumber.value - 1
 		GameManager.load_current_set(GameManager.problem_number)
 		$ProblemError.text = ""

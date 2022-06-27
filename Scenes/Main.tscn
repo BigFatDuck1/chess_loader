@@ -130,6 +130,7 @@ columns = 8
 position = Vector2( -45, 0 )
 frames = SubResource( 1 )
 centered = false
+flip_v = true
 
 [node name="Title" type="Label" parent="Board"]
 margin_top = -54.0
@@ -248,6 +249,8 @@ margin_top = 113.0
 margin_right = 95.0
 margin_bottom = 177.0
 theme = SubResource( 15 )
+min_value = 1.0
+value = 1.0
 align = 1
 
 [node name="ProblemError" type="Label" parent="GUI"]
