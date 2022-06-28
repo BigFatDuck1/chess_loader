@@ -12,6 +12,7 @@ var database = "res://Database/" # File path for .json
 
 # File info
 var json_data # The file itself
+var raw_FEN
 var file_name
 var board_state = null # Same as FEN_clear
 var FEN_clear = [] # Array that stores each piece on the board ("white rook" etc)
@@ -62,6 +63,7 @@ func load_file(file_path):
 
 func load_current_set(n):
 	problem_number = n + 1 
+	raw_FEN = json_data[n]["FEN"]
 	raw_convert(json_data[n]["FEN"])
 	GameManager.turn = json_data[n]["Turn"]
 	GameManager.solution = json_data[n]["Solution"]

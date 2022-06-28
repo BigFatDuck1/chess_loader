@@ -20,9 +20,11 @@ func _ready():
 	# Next and Previous button
 	$Next.connect("pressed", self, "next")
 	$Previous.connect("pressed", self, "previous")
-	#Random button
+	# Random button
 	$Random.connect("pressed", self, "shuffle")
-	#Clears error message
+	# Rotate button
+	$Rotate.connect("pressed", self, "rotate")
+	# Clears error message
 	$ClearErrorMessages.connect("timeout", self, "clear_error_messages")
 
 # File browser
@@ -56,6 +58,7 @@ func play_pressed():
 		$ShowHide.pressed = false
 	elif GameManager.total_number == 0:
 		$ProblemError.text = "No file loaded!"
+	GameManager.Main.get_node("FENInput").text = GameManager.raw_FEN
 
 func next():
 	$ProblemNumber.value += 1
@@ -79,6 +82,25 @@ func show_hide_pressed():
 		solution_state = 0
 		$Solution.visible_characters = 0
 
+# Rotate button
+func rotate():
+	# Turn indicator
+	if GameManager.Main.get_node("Board/AnimatedSprite").flip_v == true:
+		GameManager.Main.get_node("Board/AnimatedSprite").flip_v = false
+	elif GameManager.Main.get_node("Board/AnimatedSprite").flip_v == false:
+		GameManager.Main.get_node("Board/AnimatedSprite").flip_v = true
+	# Flip pieces
+	var all_pieces = GameManager.Main.get_node("Board/GridContainer").get_children()
+	if GameManager.Main.get_node("Board/GridContainer").rect_rotation == 0.0:
+		GameManager.Main.get_node("Board/GridContainer").rect_rotation = 180.0
+		for p in all_pieces:
+			p.flip_v = true
+	elif GameManager.Main.get_node("Board/GridContainer").rect_rotation == 180.0:
+		GameManager.Main.get_node("Board/GridContainer").rect_rotation = 0.0
+		for p in all_pieces:
+			p.flip_v = false 
+		
+	
 # Clears error messages after approximately 5 seconds
 func clear_error_messages():
 	if $ProblemError.text != "":

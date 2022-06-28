@@ -10,8 +10,6 @@ var source # File path
 var letter 
 var number
 
-func _ready():
-	pass
 
 func _init(f):
 	file_name = f
