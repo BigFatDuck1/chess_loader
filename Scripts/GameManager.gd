@@ -42,7 +42,7 @@ var piece_dict = {
 }
 
 func _ready():
-	load_file("50mates.json") # Default
+	load_file("mates.json") # Default
 
 func load_file(file_path):
 	json_data = get_json(database + file_path)

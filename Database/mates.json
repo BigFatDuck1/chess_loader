@@ -47,6 +47,34 @@
         "Turn": "w",
         "Solution": "\n 1. Re8+ Kg7 \n 2. Rg8#",
         "Text": "Arabian Mate"
+    },
+    {
+        "Title": "Philidor's Legacy",
+        "FEN": "r5k1/p1n2Npp/1p2Q3/1qpp2B1/2b5/2P5/P4PPP/4R1K1",
+        "Turn": "w",
+        "Solution": "\n 1. Nh6++ Kh8 (if Kh6, 2. Qg8#) \n 2. Qg8+ Rxg8 \n 3. Nf7#",
+        "Text": "Philidor's legacy: the classic smothered mate"
+    },
+    {
+        "Title": "Philidor's Legacy",
+        "FEN": "r1b1k2r/bpp2ppp/2n5/P7/2B1n3/BQPp4/3N1qPP/R3R2K",
+        "Turn": "b",
+        "Solution": "\n 1. ... Qg1+ \n 2. Rxg1 Nf2#",
+        "Text": "Philidor's legacy: a7 Bishop guards the Queen, forcing the white rook to take the queen and unpin the knight - a decoy sacrifice"
+    },
+    {
+        "Title": "Philidor's Legacy",
+        "FEN": "r2q2rk/pp4bp/2p1n1b1/3pPpN1/3P1P1Q/1P6/PB4BP/R4RK1",
+        "Turn": "w",
+        "Solution": "\n 1. Qxh7 Bxh7 \n 2. Nf7#",
+        "Text": "Removal of the guard by a simple Queen sacrifice"
+    },
+    {
+        "Title": "Semi-smothered mate",
+        "FEN": "1q2rN1k/pb2b1p1/1p2Bn1p/8/3P4/P1PQ4/3B1PPP/6K1",
+        "Turn": "w",
+        "Solution": "\n 1. Qh7+ Nxh7 \n 2. Ng6#",
+        "Text": "Semi-smothered mate by means of white Bishop guarding black King's escape square. Black Knight is forced to capture Qh7 because white Knight guards the Queen."
     }
     
 ]
